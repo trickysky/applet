@@ -1,0 +1,4 @@
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location></map>
+<button bindtap="location">我的位置</button>
+<button bindtap="home">home</button>
+<button bindtap="mainTown">主楼</button>
