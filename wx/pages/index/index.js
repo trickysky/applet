@@ -12,14 +12,32 @@ Page({
     wx.getLocation({
       type: 'wgs84', 
       success: function(res){
-        console.log('lon: '+res.longitude);
-        console.log('lat: '+res.latitude);
-        console.log('speed: '+res.speed);
-        console.log('acc: '+res.accuracy);
         that.setData({
           longitude: res.longitude,
           latitude: res.latitude,
           scale: 16
+        })
+        var now=Math.floor((new Date()).getTime()/1000);
+        wx.request({
+          url: 'https://local.tiankun.me:8000/location',
+          data: {
+            'user_id': '2014210120',
+            'datetime': now.toString(),
+            'longitude': res.longitude.toString(),
+            'latitude': res.latitude.toString()
+          },
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          // header: {}, // 设置请求的 header
+          success: function(res){
+            // success
+            console.log(res)
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
         })
       },
       fail: function() {
@@ -29,41 +47,4 @@ Page({
       }
     })
   },
-  home() {
-    this.setData({
-      longitude:121.4813014484,
-      latitude:31.2337697830,
-      markers: [{
-        iconPath: "/image/location.png",
-        id: 0,
-        latitude: 31.2337697830,
-        longitude: 121.4813014484,
-        width: 50,
-        height: 50
-      }],
-    })
-  },
-  mainTown() {
-    this.setData({
-      longitude:116.3325815066,
-      latitude:40.0008488354,
-      markers: [{
-        iconPath: "/image/location.png",
-        id: 0,
-        latitude: 40.0008488354,
-        longitude: 116.3325815066,
-        width: 50,
-        height: 50
-      }],
-    })
-  },
-  regionchange(e) {
-    console.log(e.type)
-  },
-  markertap(e) {
-    console.log(e.markerId)
-  },
-  controltap(e) {
-    console.log(e.controlId)
-  }
 })
