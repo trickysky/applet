@@ -1,0 +1,7 @@
+map {
+    margin-top: 2rem;
+}
+
+#recordBtn {
+    margin: 2rem 2rem 0 2rem;
+}

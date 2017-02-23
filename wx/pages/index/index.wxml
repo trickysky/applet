@@ -1,3 +1,2 @@
-<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" bindregionchange="regionchange" show-location></map>
-<button bindtap="location">我的位置</button>
-
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" show-location></map>
+<button id="recordBtn" class="{{btn_stat}}" disabled="{{location_authority}}" type="{{btn_type}}" bindtap="record">{{stat_text}}</button>
