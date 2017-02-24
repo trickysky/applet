@@ -5,3 +5,18 @@ map {
 #recordBtn {
     margin: 2rem 2rem 0 2rem;
 }
+
+#inputView {
+    width: 50%;
+    margin: 2rem auto 0 auto;
+}
+
+input {
+    border-width: 2rpx;
+    border-style: solid;
+    text-align: center;
+}
+
+.placeholder {
+   font-size: 0.7rem; 
+}

@@ -1,2 +1,5 @@
 <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" show-location></map>
-<button id="recordBtn" class="{{btn_stat}}" disabled="{{location_authority}}" type="{{btn_type}}" bindtap="record">{{stat_text}}</button>
+<view id="inputView">
+    <input type="text" placeholder="输入名字" placeholder-class="placeholder" maxlength="12" bindinput="setName" value="{{name}}" />
+</view>
+<button id="recordBtn" class="{{btn_stat}}" disabled="{{recordAuthority}}" type="{{btn_type}}" bindtap="record">{{stat_text}}</button>

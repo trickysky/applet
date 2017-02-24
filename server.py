@@ -14,14 +14,14 @@ crt_file = r'/Users/tk/applet/openssl/tiankun.me.crt'
 context = (crt_file, key_file)
 
 
-@app.route("/location", methods=['POST'])
+@app.route("/", methods=['POST'])
 def hello():
     data = ast.literal_eval(request.data)
     user_id = data['user_id']
     # 秒
-    datetime_list = data['datetime'].split(';')
-    longitude_list = data['longitude'].split(';')
-    latitude_list = data['latitude'].split(';')
+    datetime_list = data['datetime'].split(',')
+    longitude_list = data['longitude'].split(',')
+    latitude_list = data['latitude'].split(',')
     pg_db.connect()
     pg_db.create_table(Data, True)
     for i in range(len(datetime_list)):
