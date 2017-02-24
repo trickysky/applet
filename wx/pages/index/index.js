@@ -1,7 +1,7 @@
 var ini_lon=116.3325815066, ini_lat=40.0008488354;
-var maxCount=5;  //发送阈值
-var getLocationFreq=1000*1; //获取位置频率(毫秒)
-var checkDataFreq=1000*5; //检查数据个数频率(毫秒)
+var getLocationFreq=1000*2; //获取位置频率(毫秒)
+var checkDataFreq=1000*60*5; //检查数据个数频率(毫秒)
+var maxCount=Math.floor(checkDataFreq/getLocationFreq);  //发送阈值
 
 var locAuthority=false;
 var recording=false;
@@ -81,7 +81,7 @@ function checkData() {
   if ((!recording&&count>0)||count>=maxCount) {
     var keys=wx.getStorageInfoSync().keys
     var i=0 ,k=0, date=[], lon=[], lat=[];
-    while (k<maxCount&&i<keys.length) {
+    while (k<maxCount+5&&i<keys.length) {
       if (keys[i][0]==='t'&&keys[i].match(/\d{10}/)){
         date.push(keys[i].match(/\d{10}/)[0]);
         var t=wx.getStorageSync(keys[i]).split(',');
@@ -102,7 +102,7 @@ function checkData() {
     count = wx.getStorageSync('count')
     if (date&&name) {
       wx.request({
-        url: 'https://applet.tiankun.me:8000/',
+        url: 'https://wxapp.tiankun.me',
         data: {
           'user_id': name,
           'datetime': date.join(),
